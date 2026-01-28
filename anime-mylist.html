@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイリスト - AniListo</title>
+    <title>マイリスト - OMG oh OMG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="base.css">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="img/fb.png">
     <style>
         .stat-card {
             transition: transform 0.3s ease;
@@ -101,7 +101,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
-                <i class="bi bi-film"></i> AniListo
+                <i class="bi bi-film"></i> OMG oh OMG
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -139,46 +139,28 @@
             <h1 class="display-4 fw-bold mb-3">
                 <i class="bi bi-star-fill"></i> マイリスト
             </h1>
-            <p class="lead">あなたの視聴記録と進捗を管理しよう</p>
+            <p class="lead">あなたのゲームを管理しよう</p>
         </div>
     </div>
 
     <div class="container">
         <!-- 統計カード -->
         <div class="row g-4 mb-5">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="card stat-card border-primary">
                     <div class="card-body text-center">
-                        <i class="bi bi-play-circle-fill text-primary display-4 mb-3"></i>
-                        <h3 class="fw-bold mb-1">12</h3>
-                        <p class="text-muted mb-0">視聴中</p>
+                        <i class="bi bi-box-fill text-primary display-4 mb-3"></i>
+                        <h3 class="fw-bold mb-1">4</h3>
+                        <p class="text-muted mb-0">所持ゲーム</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="card stat-card border-success">
                     <div class="card-body text-center">
-                        <i class="bi bi-check-circle-fill text-success display-4 mb-3"></i>
-                        <h3 class="fw-bold mb-1">45</h3>
-                        <p class="text-muted mb-0">視聴済み</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card stat-card border-warning">
-                    <div class="card-body text-center">
-                        <i class="bi bi-clock-fill text-warning display-4 mb-3"></i>
-                        <h3 class="fw-bold mb-1">23</h3>
-                        <p class="text-muted mb-0">視聴予定</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card stat-card border-danger">
-                    <div class="card-body text-center">
-                        <i class="bi bi-x-circle-fill text-danger display-4 mb-3"></i>
-                        <h3 class="fw-bold mb-1">8</h3>
-                        <p class="text-muted mb-0">視聴中断</p>
+                        <i class="bi bi-bookmark-fill text-success display-4 mb-3"></i>
+                        <h3 class="fw-bold mb-1">3</h3>
+                        <p class="text-muted mb-0">ウィッシュリスト</p>
                     </div>
                 </div>
             </div>
@@ -189,33 +171,17 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="watching-tab" data-bs-toggle="pill" data-bs-target="#watching"
                     type="button" role="tab">
-                    <i class="bi bi-play-circle"></i>
-                    <span class="d-none d-sm-inline">視聴中 (12)</span>
-                    <span class="d-inline d-sm-none">視聴中</span>
+                    <i class="bi bi-box-fill"></i>
+                    <span class="d-none d-sm-inline">所持ゲーム (4)</span>
+
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="completed-tab" data-bs-toggle="pill" data-bs-target="#completed"
                     type="button" role="tab">
-                    <i class="bi bi-check-circle"></i>
-                    <span class="d-none d-sm-inline">視聴済み (45)</span>
-                    <span class="d-inline d-sm-none">済</span>
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="plantowatch-tab" data-bs-toggle="pill" data-bs-target="#plantowatch"
-                    type="button" role="tab">
-                    <i class="bi bi-clock"></i>
-                    <span class="d-none d-sm-inline">視聴予定 (23)</span>
-                    <span class="d-inline d-sm-none">予定</span>
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="dropped-tab" data-bs-toggle="pill" data-bs-target="#dropped" type="button"
-                    role="tab">
-                    <i class="bi bi-x-circle"></i>
-                    <span class="d-none d-sm-inline">視聴中断 (8)</span>
-                    <span class="d-inline d-sm-none">中断</span>
+                    <i class="bi bi-bookmark-fill"></i>
+                    <span class="d-none d-sm-inline">ウィッシュリスト (3)</span>
+
                 </button>
             </li>
         </ul>
@@ -226,7 +192,7 @@
             <div class="tab-pane fade show active" id="watching" role="tabpanel">
                 <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="bi bi-play-circle-fill"></i> 視聴中の作品</h5>
+                        <h5 class="mb-0"><i class="bi bi-play-circle-fill"></i> 所持ゲーム</h5>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive-md">
@@ -236,21 +202,21 @@
                                         <th style="width: 100px;">作品</th>
                                         <th>タイトル</th>
                                         <th style="width: 170px;">評価</th>
-                                        <th style="width: 180px;">視聴進捗</th>
-                                        <th style="width: 150px;">最終視聴</th>
+                                        <th style="width: 180px;">プレイ時間</th>
+                                        <th style="width: 150px;">最終プレイ</th>
                                         <th style="width: 100px;">操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="anime-table-card">
                                         <td>
-                                            <img src="images/異世界の勇者 ～運命の旅路～.webp" class="anime-thumbnail" alt="異世界の勇者">
+                                            <img src="img/CF.png" class="anime-thumbnail" alt="異世界の勇者">
                                         </td>
                                         <td>
-                                            <h6 class="mb-1 fw-bold text-clamp-2">異世界の勇者 ～運命の旅路～</h6>
+                                            <h6 class="mb-1 fw-bold text-clamp-2">CHRONO FRACTURE</h6>
                                             <div>
-                                                <span class="badge bg-primary status-badge">ファンタジー</span>
-                                                <span class="badge bg-success status-badge">放送中</span>
+                                                <span class="badge bg-info">SF</span>
+                                                <span class="badge bg-success status-badge">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -265,11 +231,9 @@
                                         </td>
                                         <td>
                                             <div class="mb-1">
-                                                <small class="text-muted">8話 / 24話</small>
+                                                <small class="text-muted">10時間</small>
                                             </div>
-                                            <div class="progress progress-custom">
-                                                <div class="progress-bar bg-primary" style="width: 33%">33%</div>
-                                            </div>
+
                                         </td>
                                         <td>
                                             <small class="text-muted">2025/11/15</small>
@@ -285,13 +249,13 @@
                                     </tr>
                                     <tr class="anime-table-card">
                                         <td>
-                                            <img src="images/桜色の約束.webp" class="anime-thumbnail" alt="桜色の約束">
+                                            <img src="img/CH.png" class="anime-thumbnail" alt="桜色の約束">
                                         </td>
                                         <td>
-                                            <h6 class="mb-1 fw-bold text-clamp-2">桜色の約束</h6>
+                                            <h6 class="mb-1 fw-bold text-clamp-2">CELESTIAL HARMONY</h6>
                                             <div>
-                                                <span class="badge bg-danger status-badge">恋愛</span>
-                                                <span class="badge bg-success status-badge">放送中</span>
+                                                <span class="badge bg-primary">ファンタジー</span>
+                                                <span class="badge bg-success status-badge">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -306,10 +270,7 @@
                                         </td>
                                         <td>
                                             <div class="mb-1">
-                                                <small class="text-muted">7話 / 12話</small>
-                                            </div>
-                                            <div class="progress progress-custom">
-                                                <div class="progress-bar bg-danger" style="width: 58%">58%</div>
+                                                <small class="text-muted">16時間</small>
                                             </div>
                                         </td>
                                         <td>
@@ -326,13 +287,13 @@
                                     </tr>
                                     <tr class="anime-table-card">
                                         <td>
-                                            <img src="images/量子戦士クロノス.webp" class="anime-thumbnail" alt="量子戦士">
+                                            <img src="img/DD.png" class="anime-thumbnail" alt="量子戦士">
                                         </td>
                                         <td>
-                                            <h6 class="mb-1 fw-bold text-clamp-2">量子戦士クロノス</h6>
+                                            <h6 class="mb-1 fw-bold text-clamp-2">DREADBOUND</h6>
                                             <div>
-                                                <span class="badge bg-info status-badge">SF</span>
-                                                <span class="badge bg-success status-badge">放送中</span>
+                                                <span class="badge bg-primary">ファンタジー</span>
+                                                <span class="badge bg-success status-badge">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -347,11 +308,9 @@
                                         </td>
                                         <td>
                                             <div class="mb-1">
-                                                <small class="text-muted">5話 / 24話</small>
+                                                <small class="text-muted">7時間</small>
                                             </div>
-                                            <div class="progress progress-custom">
-                                                <div class="progress-bar bg-info" style="width: 21%">21%</div>
-                                            </div>
+
                                         </td>
                                         <td>
                                             <small class="text-muted">2025/10/31</small>
@@ -367,13 +326,13 @@
                                     </tr>
                                     <tr class="anime-table-card">
                                         <td>
-                                            <img src="images/魔法学園の日常.webp" class="anime-thumbnail" alt="魔法学園">
+                                            <img src="img/EW.png" class="anime-thumbnail" alt="魔法学園">
                                         </td>
                                         <td>
-                                            <h6 class="mb-1 fw-bold text-clamp-2">魔法学園の日常</h6>
+                                            <h6 class="mb-1 fw-bold text-clamp-2">ECHOES OF THE WILD</h6>
                                             <div>
                                                 <span class="badge bg-primary status-badge">ファンタジー</span>
-                                                <span class="badge bg-success status-badge">放送中</span>
+                                                <span class="badge bg-success status-badge">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -388,11 +347,9 @@
                                         </td>
                                         <td>
                                             <div class="mb-1">
-                                                <small class="text-muted">10話 / 12話</small>
+                                                <small class="text-muted">19時間</small>
                                             </div>
-                                            <div class="progress progress-custom">
-                                                <div class="progress-bar bg-success" style="width: 83%">83%</div>
-                                            </div>
+
                                         </td>
                                         <td>
                                             <small class="text-muted">2025/10/30</small>
@@ -416,7 +373,7 @@
             <div class="tab-pane fade" id="completed" role="tabpanel">
                 <div class="card mb-4">
                     <div class="card-header bg-success text-white">
-                        <h5 class="mb-0"><i class="bi bi-check-circle-fill"></i> 視聴済みの作品</h5>
+                        <h5 class="mb-0"><i class="bi bi-check-circle-fill"></i> ウィッシュリスト</h5>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive-md">
@@ -425,21 +382,21 @@
                                     <tr>
                                         <th style="width: 100px;">作品</th>
                                         <th>タイトル</th>
-                                        <th style="width: 150px;">あなたの評価</th>
-                                        <th style="width: 150px;">視聴完了日</th>
+                                        <th style="width: 150px;">評価</th>
+                                        <th style="width: 150px;">値段</th>
                                         <th style="width: 100px;">操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="anime-table-card">
                                         <td>
-                                            <img src="images/竜騎士の伝説.webp" class="anime-thumbnail" alt="竜騎士">
+                                            <img src="img/WD.png" class="anime-thumbnail" alt="竜騎士">
                                         </td>
                                         <td>
-                                            <h6 class="mb-1 fw-bold text-clamp-2">竜騎士の伝説</h6>
+                                            <h6 class="mb-1 fw-bold text-clamp-2">WASTLAND DRIFTERS</h6>
                                             <div>
-                                                <span class="badge bg-primary status-badge">ファンタジー</span>
-                                                <span class="badge bg-secondary status-badge">完結</span>
+                                                <span class="badge bg-info status-badge">SF</span>
+                                                <span class="badge bg-success">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -453,7 +410,7 @@
                                             <small class="text-muted">4.7</small>
                                         </td>
                                         <td>
-                                            <small class="text-muted">2025/11/01</small>
+                                            <small class="text-muted">¥980</small>
                                         </td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-primary" title="詳細">
@@ -466,13 +423,13 @@
                                     </tr>
                                     <tr class="anime-table-card">
                                         <td>
-                                            <img src="images/近未来探偵ネオ.webp" class="anime-thumbnail" alt="未来探偵">
+                                            <img src="img/ST.png" class="anime-thumbnail" alt="未来探偵">
                                         </td>
                                         <td>
-                                            <h6 class="mb-1 fw-bold text-clamp-2">未来探偵ネオ</h6>
+                                            <h6 class="mb-1 fw-bold text-clamp-2">STELLARIS</h6>
                                             <div>
                                                 <span class="badge bg-info status-badge">SF</span>
-                                                <span class="badge bg-secondary status-badge">完結</span>
+                                                <span class="badge bg-success">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -486,7 +443,7 @@
                                             <small class="text-muted">4.4</small>
                                         </td>
                                         <td>
-                                            <small class="text-muted">2025/8/25</small>
+                                            <small class="text-muted">¥1,000</small>
                                         </td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-primary" title="詳細">
@@ -499,13 +456,13 @@
                                     </tr>
                                     <tr class="anime-table-card">
                                         <td>
-                                            <img src="images/音楽少女のメロディ.webp" class="anime-thumbnail" alt="音楽少女">
+                                            <img src="img/SO.png" class="anime-thumbnail" alt="音楽少女">
                                         </td>
                                         <td>
-                                            <h6 class="mb-1 fw-bold text-clamp-2">音楽少女のメロディ</h6>
+                                            <h6 class="mb-1 fw-bold text-clamp-2">STARLIGHT ODYSSEY</h6>
                                             <div>
-                                                <span class="badge bg-danger status-badge">恋愛</span>
-                                                <span class="badge bg-secondary status-badge">完結</span>
+                                                <span class="badge bg-info status-badge">SF</span>
+                                                <span class="badge bg-success">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -519,7 +476,7 @@
                                             <small class="text-muted">4.5</small>
                                         </td>
                                         <td>
-                                            <small class="text-muted">2024/10/15</small>
+                                            <small class="text-muted">¥3,800</small>
                                         </td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-primary" title="詳細">
@@ -564,7 +521,7 @@
                                             <h6 class="mb-1 fw-bold text-clamp-2">都市伝説探偵</h6>
                                             <div>
                                                 <span class="badge bg-dark status-badge">ホラー</span>
-                                                <span class="badge bg-success status-badge">放送中</span>
+                                                <span class="badge bg-success status-badge">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -598,7 +555,7 @@
                                             <div>
                                                 <span class="badge status-badge"
                                                     style="background-color: #f97316;">グルメ</span>
-                                                <span class="badge bg-success status-badge">放送中</span>
+                                                <span class="badge bg-success status-badge">製品版</span>
                                             </div>
                                         </td>
                                         <td>
@@ -711,30 +668,30 @@
 
 
         <!-- 視聴統計 -->
-        <div class="row mb-5">
-            <div class="col-lg-6">
+        <div class="row mb-10">
+            <div class="col-lg-15">
                 <div class="card">
                     <div class="card-header bg-light">
-                        <h5 class="mb-0"><i class="bi bi-graph-up"></i> 視聴統計</h5>
+                        <h5 class="mb-0"><i class="bi bi-graph-up"></i> 統計</h5>
                     </div>
                     <div class="card-body">
                         <div class="mb-4">
                             <div class="d-flex justify-content-between mb-2">
-                                <span>総視聴作品数</span>
-                                <strong>88作品</strong>
+                                <span>所持ゲーム数</span>
+                                <strong>4作品</strong>
                             </div>
                             <div class="progress" style="height: 25px;">
-                                <div class="progress-bar bg-primary" style="width: 14%">
-                                    <small>視聴中 12</small>
+                                <div class="progress-bar bg-primary" style="width: 18%">
+                                    <small>CHRONO FRACTURE 10</small>
                                 </div>
-                                <div class="progress-bar bg-success" style="width: 51%">
-                                    <small>視聴済み 45</small>
+                                <div class="progress-bar bg-success" style="width: 29%">
+                                    <small>CELESTIAL HARMONY 16</small>
                                 </div>
-                                <div class="progress-bar bg-warning" style="width: 26%">
-                                    <small>視聴予定 23</small>
+                                <div class="progress-bar bg-warning" style="width: 13%">
+                                    <small>DREADBOUND 7</small>
                                 </div>
-                                <div class="progress-bar bg-danger" style="width: 9%">
-                                    <small>中断 8</small>
+                                <div class="progress-bar bg-danger" style="width: 40%">
+                                    <small>ECHOES OF THE WILD 19</small>
                                 </div>
                             </div>
                         </div>
@@ -743,80 +700,20 @@
 
                         <div class="row text-center">
                             <div class="col-6 mb-3">
-                                <h4 class="text-primary fw-bold">1,280</h4>
-                                <small class="text-muted">総視聴エピソード数</small>
+                                <h4 class="text-primary fw-bold">4</h4>
+                                <small class="text-muted">所持ゲーム数</small>
                             </div>
                             <div class="col-6 mb-3">
-                                <h4 class="text-success fw-bold">640</h4>
-                                <small class="text-muted">視聴時間（時間）</small>
+                                <h4 class="text-success fw-bold">56時間</h4>
+                                <small class="text-muted">総プレイ時間</small>
                             </div>
-                            <div class="col-6">
-                                <h4 class="text-warning fw-bold">4.3</h4>
-                                <small class="text-muted">平均評価</small>
-                            </div>
-                            <div class="col-6">
-                                <h4 class="text-info fw-bold">18</h4>
-                                <small class="text-muted">レビュー投稿数</small>
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0"><i class="bi bi-pie-chart-fill"></i> ジャンル別統計</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span><span class="badge bg-primary">ファンタジー</span></span>
-                                <strong>28作品</strong>
-                            </div>
-                            <div class="progress" style="height: 20px;">
-                                <div class="progress-bar bg-primary" style="width: 32%">32%</div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span><span class="badge bg-danger">恋愛</span></span>
-                                <strong>22作品</strong>
-                            </div>
-                            <div class="progress" style="height: 20px;">
-                                <div class="progress-bar bg-danger" style="width: 25%">25%</div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span><span class="badge bg-warning text-dark">アクション</span></span>
-                                <strong>18作品</strong>
-                            </div>
-                            <div class="progress" style="height: 20px;">
-                                <div class="progress-bar bg-warning" style="width: 20%">20%</div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span><span class="badge bg-info">SF</span></span>
-                                <strong>12作品</strong>
-                            </div>
-                            <div class="progress" style="height: 20px;">
-                                <div class="progress-bar bg-info" style="width: 14%">14%</div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span><span class="badge bg-secondary">その他</span></span>
-                                <strong>8作品</strong>
-                            </div>
-                            <div class="progress" style="height: 20px;">
-                                <div class="progress-bar bg-secondary" style="width: 9%">9%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 
@@ -825,7 +722,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> AniListo</h5>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> OMG oh OMG</h5>
                     <p class="text-light">あなたの好きなアニメを見つけて、共有しよう。</p>
                 </div>
                 <div class="col-md-2 mb-3">
@@ -855,7 +752,7 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center text-light mb-0">&copy; 2025 AniListo. All rights reserved.</p>
+            <p class="text-center text-light mb-0">&copy; 2025 OMG oh OMG. All rights reserved.</p>
         </div>
     </footer>
     <button id="backToTopBtn" class="btn shadow d-flex align-items-center justify-content-center">

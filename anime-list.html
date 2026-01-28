@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>作品一覧 - AniListo</title>
+    <title>ゲーム一覧 - OMG oh OMG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="base.css">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="img/fb.png">
     <style>
         .filter-card {
             position: sticky;
@@ -36,6 +36,59 @@
             background-color: var(--primary-color);
             border-color: var(--primary-color);
         }
+
+        /* リスト全体 */
+        .steam-top-sellers {
+            background-color: #1a2430;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* 各行の設定 */
+        .steam-seller-item {
+            height: 50px;
+            background-color: #f8f9fa;
+            border-bottom: #516b8b29 solid 1px;
+            color: #000000;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        /* ホバーした時のSteamっぽい青色 */
+        .steam-seller-item:hover {
+            background-color: #3b6e8c;
+            color: #fff;
+            z-index: 1;
+        }
+
+        /* 順位の数字 */
+        .rank-number {
+            width: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4f94bc;
+        }
+
+        /* サムネイル画像 */
+        .thumb-box {
+            width: 120px;
+            height: 100%;
+        }
+
+        .thumb-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ゲーム名と価格 */
+        .game-name {
+            font-weight: 500;
+            max-width: 250px;
+        }
+
+        .price {
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -44,7 +97,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
-                <i class="bi bi-film"></i> AniListo
+                <i class="bi bi-film"></i> OMG oh OMG
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -79,12 +132,11 @@
     <!-- ページヘッダー -->
     <div class="page-heading">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-3">アニメ作品一覧</h1>
-            <p class="lead">10,000以上の作品からお気に入りを見つけよう</p>
+            <h1 class="display-4 fw-bold mb-3">ゲーム一覧</h1>
             <div class="row mt-4">
                 <div class="col-md-8">
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" placeholder="作品名、キャラクター名で検索...">
+                        <input type="text" class="form-control" placeholder="">
                         <button class="btn btn-light" type="button">
                             <i class="bi bi-search"></i> 検索
                         </button>
@@ -146,7 +198,7 @@
 
                         <!-- 放送時期 -->
                         <div class="filter-section">
-                            <h6 class="fw-bold mb-3">放送時期</h6>
+                            <h6 class="fw-bold mb-3">発売日</h6>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="radio" name="season" id="season1">
                                 <label class="form-check-label" for="season1">
@@ -181,23 +233,23 @@
 
                         <!-- 放送状況 -->
                         <div class="filter-section">
-                            <h6 class="fw-bold mb-3">放送状況</h6>
+                            <h6 class="fw-bold mb-3">開発状況</h6>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" id="status1">
                                 <label class="form-check-label" for="status1">
-                                    放送中 <span class="badge bg-success">78</span>
+                                    製品版 <span class="badge bg-success">78</span>
                                 </label>
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" id="status2">
                                 <label class="form-check-label" for="status2">
-                                    完結 <span class="badge bg-secondary">456</span>
+                                    β <span class="badge bg-secondary">456</span>
                                 </label>
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" id="status3">
                                 <label class="form-check-label" for="status3">
-                                    放送予定 <span class="badge bg-info">23</span>
+                                    発売予定 <span class="badge bg-info">23</span>
                                 </label>
                             </div>
                         </div>
@@ -255,7 +307,7 @@
                 <!-- ツールバー -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div id="cases" class="d-none d-sm-block">
-                        <h5 class="mb-0">検索結果: <span class="fw-bold">234件</span></h5>
+                        <h5 class="mb-0">検索結果: <span class="fw-bold">10件</span></h5>
                     </div>
                     <div class="btn-group ms-auto" role="group">
                         <button type="button" class="btn btn-outline-dark sort-btn active" data-sort="popular"
@@ -273,240 +325,153 @@
 
                 <!-- 作品カード -->
                 <div class="row g-4 mb-4" id="contentDisplay">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card position-relative">
-                            <img src="images/異世界の勇者 ～運命の旅路～.webp" class="card-img-top" alt="異世界の勇者">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-success">放送中</span>
-                                </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">異世界の勇者 ～運命の旅路～</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    異世界に勇者として召喚された高校生・佐藤翔太が、仲間との絆を力に魔王軍や陰謀へ挑む。成長と感動が交錯する、胸躍る王道ファンタジー冒険譚。</p>
-                                <a href="anime-detail.html" class="stretched-link"></a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.5</span>
-                                    </div>
-                                    <small class="text-muted">1,234件</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="container py-4">
+                        <h4 class="text-white mb-3">売上トップ</h4>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/桜色の約束.webp" class="card-img-top" alt="桜色の約束">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-danger">恋愛</span>
-                                    <span class="badge bg-success">放送中</span>
-                                </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">桜色の約束</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    高校最後の春。幼馴染との小さな“約束”を胸に、揺れる想いと未来への一歩を描く、切なくも温かい青春ラブストーリー。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.8</span>
-                                    </div>
-                                    <small class="text-muted">2,156件</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <div class="steam-top-sellers">
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/量子戦士クロノス.webp" class="card-img-top" alt="量子戦士">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-info">SF</span>
-                                    <span class="badge bg-success">放送中</span>
+                            <a href="anime-detail.html" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">1</div>
+                                <div class="thumb-box">
+                                    <img src="img/CF.png" alt="game1">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">量子戦士クロノス</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    時空のゆがみに巻き込まれた少年が“量子戦士”として覚醒。過去と未来を駆け巡り、崩壊する世界を救うため仲間と共に戦い抜く、スケール壮大なSFアクション。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.2</span>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">CHRONO FRACTURE</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥2,600</span>
                                     </div>
-                                    <small class="text-muted">987件</small>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/魔法学園の日常.webp" class="card-img-top" alt="魔法学園">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-success">放送中</span>
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">2</div>
+                                <div class="thumb-box">
+                                    <img src="img/CH.png" alt="game1">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">魔法学園の日常</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    魔法学園に通う個性豊かな生徒たちが、授業や試験、友情や恋に揺れながら日々成長していく。笑いとときめきがあふれる、魔法世界の青春ファンタジー。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.6</span>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">CELESTIAL HARMONY</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥1,300</span>
                                     </div>
-                                    <small class="text-muted">2,345件</small>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/竜騎士の伝説.webp" class="card-img-top" alt="竜騎士">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-warning text-dark">人気</span>
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">3</div>
+                                <div class="thumb-box">
+                                    <img src="img/DD.png" alt="game1">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">竜騎士の伝説</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    竜と契約した若き騎士が、仲間と共に迫りくる脅威と古代の謎に立ち向かう。絆と勇気が導く、壮大な冒険と伝説が紡がれるファンタジー物語。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.7</span>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">DREADBOUND</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥1,100</span>
                                     </div>
-                                    <small class="text-muted">2,890件</small>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/都市伝説探偵.webp" class="card-img-top" alt="都市伝説">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-dark">ホラー</span>
-                                    <span class="badge bg-success">放送中</span>
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">4</div>
+                                <div class="thumb-box">
+                                    <img src="img/EW.png" alt="game1">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">都市伝説探偵</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    現代の学園で囁かれる“都市伝説”が次々と現実化。謎を追う探偵部の生徒たちが、恐怖と真相に迫っていく。怪異と推理が交錯する学園ホラーミステリー。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.3</span>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">ECHOES OF THE WILD</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥5,800</span>
                                     </div>
-                                    <small class="text-muted">1,567件</small>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/近未来探偵ネオ.webp" class="card-img-top" alt="未来探偵">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-info">SF</span>
-                                    <span class="badge bg-success">放送中</span>
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">5</div>
+                                <div class="thumb-box">
+                                    <img src="img/PF.png" alt="game1">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">未来探偵ネオ</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    近未来都市を舞台に、若き探偵ネオが最新テクノロジーと鋭い推理力で複雑な事件に挑む。陰謀が渦巻く世界で真実を追い続ける、スタイリッシュなSFミステリーアクション。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.4</span>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">PRIMAL FURY</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥900</span>
                                     </div>
-                                    <small class="text-muted">1,987件</small>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/音楽少女のメロディ.webp" class="card-img-top" alt="音楽少女">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-danger">恋愛</span>
-                                    <span class="badge bg-secondary">完結</span>
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">6</div>
+                                <div class="thumb-box">
+                                    <img src="img/SG.png" alt="game1">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">音楽少女のメロディ</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    音楽に情熱を注ぐ少女たちが、友情や恋、夢に揺れながら成長していく姿を描く。笑顔と涙、感動が溢れる青春音楽ストーリー。
-
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.5</span>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">SHOGUN'S GLORY</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥1,800</span>
                                     </div>
-                                    <small class="text-muted">3,245件</small>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/料理バトル王.webp" class="card-img-top" alt="料理バトル">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge" style="background-color: #f97316;">グルメ</span>
-                                    <span class="badge bg-success">放送中</span>
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">7</div>
+                                <div class="thumb-box">
+                                    <img src="img/SL.png" alt="game1">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">料理バトル王</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    情熱と技をぶつけ、究極の一皿を目指す少年たちの熱血料理バトル。友情やライバルとの絆を胸に、最強の料理人への道を駆け抜けるグルメアクション。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.1</span>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">SOULFORGE LEGENDS</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥4,600</span>
                                     </div>
-                                    <small class="text-muted">876件</small>
                                 </div>
-                            </div>
+                            </a>
+
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">8</div>
+                                <div class="thumb-box">
+                                    <img src="img/SO.png" alt="game1">
+                                </div>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">STARLIGHT ODYSSEY</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥3,800</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">9</div>
+                                <div class="thumb-box">
+                                    <img src="img/ST.png" alt="game1">
+                                </div>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">STELLARIS</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥1,000</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="#" class="steam-seller-item d-flex align-items-center text-decoration-none">
+                                <div class="rank-number">10</div>
+                                <div class="thumb-box">
+                                    <img src="img/WD.png" alt="game1">
+                                </div>
+                                <div
+                                    class="info-box d-flex justify-content-between align-items-center flex-grow-1 px-3">
+                                    <div class="game-name text-truncate">WASTLAND DRIFTERS</div>
+                                    <div class="price-box d-flex align-items-center">
+                                        <span class="price">¥980</span>
+                                    </div>
+                                </div>
+                            </a>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -546,7 +511,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> AniListo</h5>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> OMG oh OMG</h5>
                     <p class="text-light">あなたの好きなアニメを見つけて、共有しよう。</p>
                 </div>
                 <div class="col-md-2 mb-3">
@@ -576,7 +541,7 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center text-light mb-0">&copy; 2025 AniListo. All rights reserved.</p>
+            <p class="text-center text-light mb-0">&copy; 2025 OMG oh OMG. All rights reserved.</p>
         </div>
     </footer>
     <button id="backToTopBtn" class="btn shadow d-flex align-items-center justify-content-center">

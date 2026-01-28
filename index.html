@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AniListo - アニメレビューサイト</title>
+    <title>OMG oh OMG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="base.css">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="img/fb.png">
     <style>
         .anime-card img {
             width: 100%;
@@ -50,6 +50,132 @@
                 object-position: 50% 40%;
             }
         }
+
+        /* 上の自動スライドのCSS ↓ ---------------------------------------------------------------------------- */
+
+        /* スライド全体の枠 */
+        .manga-slider {
+            display: flex;
+            width: 100%;
+        }
+
+        /* 横に並べて動かすトラック */
+        .manga-track {
+            display: flex;
+            flex-shrink: 0;
+            gap: 20px;
+            /* 画像の間のスペース（少し空ける） */
+            animation: scroll-left 20s linear infinite;
+            /* 20秒かけて左へ（ゆっくり） */
+        }
+
+        /* 各画像アイテム */
+        .manga-item {
+            width: 250px;
+            /* 画像の横幅 */
+            flex-shrink: 0;
+        }
+
+        /* 右から左へ流れるアニメーションの設定 */
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+                /* 半分（1セット分）進んだらリセット */
+            }
+        }
+
+        /* 手動横スライドCSS ↓ ------------------------------------------------------------------------------ */
+
+        .manga-three-column-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            /* アイテム間の隙間 */
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .manga-column-item {
+            /* 3つ並べる計算： (100% - 隙間分) / 3 */
+            flex: 0 0 calc((100% - (12px * 2)) / 3);
+            scroll-snap-align: start;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #dee2e6;
+        }
+
+        /* 画像のアスペクト比を保つ（漫画の表紙なら 3:4 など） */
+        .manga-column-item img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* スクロールバーを細くしてデザインに馴染ませる */
+        .manga-three-column-slider::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .manga-three-column-slider::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+
+        /* 手動横スライド2CSS ↓ ------------------------------------------------------------------------------ */
+
+
+        /* スライダーの外枠 */
+        .manga-grid-slider {
+            width: 100%;
+            overflow-x: auto;
+            /* 横スクロール有効 */
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 15px;
+        }
+
+        /* グリッドの本体 */
+        .manga-grid-track {
+            display: grid;
+            /* 縦に2列（2行）作る */
+            grid-template-rows: repeat(2, auto);
+            /* 横に自動で並べる（1列の幅を指定） */
+            grid-auto-flow: column;
+            grid-auto-columns: calc((100% - (10px * 4)) / 5);
+            /* 画面幅に5つ並ぶ計算 */
+            gap: 15px 10px;
+            /* 縦の隙間15px、横の隙間10px */
+        }
+
+        /* 各アイテムのデザイン */
+        .manga-grid-item {
+            scroll-snap-align: start;
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .manga-grid-item img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+        }
+
+        .manga-grid-item p {
+            margin: 5px 0;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -58,7 +184,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
-                <i class="bi bi-film"></i> AniListo
+                <i class="bi bi-film"></i> OMG oh OMG
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -92,17 +218,31 @@
 
     <!-- ヒーローセクション -->
     <div class="hero-section">
+
         <div class="container text-center">
-            <h1 class="display-3 fw-bold mb-4">あなたの好きなアニメを見つけよう</h1>
-            <p class="lead mb-4">10,000以上の作品から、お気に入りのアニメを探そう</p>
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" placeholder="作品名で検索...">
+                        <input type="text" class="form-control" placeholder="">
                         <button class="btn btn-light" type="button">
                             <i class="bi bi-search"></i> 検索
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid py-5 overflow-hidden">
+            <div class="manga-slider">
+                <div class="manga-track">
+                    <div class="manga-item"><img src="img/CF.png" class="img-fluid rounded" alt="1"></div>
+                    <div class="manga-item"><img src="img/CH.png" class="img-fluid rounded" alt="2"></div>
+                    <div class="manga-item"><img src="img/DD.png" class="img-fluid rounded" alt="3"></div>
+                    <div class="manga-item"><img src="img/EW.png" class="img-fluid rounded" alt="4"></div>
+                    <div class="manga-item"><img src="img/PF.png" class="img-fluid rounded" alt="1"></div>
+                    <div class="manga-item"><img src="img/SL.png" class="img-fluid rounded" alt="2"></div>
+                    <div class="manga-item"><img src="img/SO.png" class="img-fluid rounded" alt="3"></div>
+                    <div class="manga-item"><img src="img/WD.png" class="img-fluid rounded" alt="4"></div>
                 </div>
             </div>
         </div>
@@ -118,77 +258,51 @@
                 <a href="#" class="btn btn-outline-dark">すべて見る <i class="bi bi-arrow-right"></i></a>
             </div>
 
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card anime-card position-relative">
-                        <img src="images/異世界の勇者 ～運命の旅路～.webp" class="card-img-top img-fluid" alt="異世界の勇者">
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">ファンタジー</span>
-                            <span class="badge bg-success mb-2">放送中</span>
-                            <h5 class="card-title fw-bold card-title-nowrap">異世界の勇者 ～運命の旅路～</h5>
-                            <p class="card-text text-muted text-clamp-3">異世界に勇者として召喚された高校生・佐藤翔太が、仲間との絆を力に魔王軍や陰謀へ挑む。成長と感動が交錯する、胸躍る王道ファンタジー冒険譚。</p>
-                            <a href="anime-detail.html" class="stretched-link"></a>
-                            <div class="d-flex flex-column flex-sm-row flex-md-column flex-lg-row justify-content-between align-items-start align-items-sm-center align-items-md-start align-items-lg-center">
-                                <div class="rating-stars mb-2 mb-sm-0 mb-md-2 mb-lg-0">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
-                                    <span class="text-dark ms-1">4.5</span>
-                                </div>
-                                <small class="text-muted">1,234件のレビュー</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="container-fluid py-5">
+                <div class="manga-three-column-slider">
 
-                <div class="col-md-4">
-                    <div class="card anime-card">
-                        <img src="images/桜色の約束.webp" class="card-img-top" alt="青春ストーリー">
-                        <div class="card-body">
-                            <span class="badge bg-danger mb-2">恋愛</span>
-                            <span class="badge bg-success mb-2">放送中</span>
-                            <h5 class="card-title fw-bold card-title-nowrap">桜色の約束</h5>
-                            <p class="card-text text-muted text-clamp-3">高校最後の春、幼馴染との大切な“約束”を胸に揺れる想いと向き合う主人公。夢と現実の狭間で迷いながらも、確かな絆が未来を照らす感動の青春ラブストーリー。</p>
-                            <div class="d-flex flex-column flex-sm-row flex-md-column flex-lg-row justify-content-between align-items-start align-items-sm-center align-items-md-start align-items-lg-center">
-                                <div class="rating-stars mb-2 mb-sm-0 mb-md-2 mb-lg-0">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
-                                    <span class="text-dark ms-1">4.8</span>
-                                </div>
-                                <small class="text-muted">2,156件のレビュー</small>
-                            </div>
-                        </div>
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/ST.png" alt="第1話">
+                        <div class="p-2 text-center small fw-bold">¥1,000</div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="card anime-card">
-                        <img src="images/量子戦士クロノス.webp" class="card-img-top" alt="SFアクション">
-                        <div class="card-body">
-                            <span class="badge bg-info mb-2">SF</span>
-                            <span class="badge bg-success mb-2">放送中</span>
-                            <h5 class="card-title fw-bold card-title-nowrap">量子戦士クロノス</h5>
-                            <p class="card-text text-muted text-clamp-3">時空のゆがみに巻き込まれた少年が“量子戦士”として覚醒。過去と未来を駆け巡り、崩壊する世界を救うため仲間と共に戦い抜く、スケール壮大なSFアクション。</p>
-                            <div class="d-flex flex-column flex-sm-row flex-md-column flex-lg-row justify-content-between align-items-start align-items-sm-center align-items-md-start align-items-lg-center">
-                                <div class="rating-stars mb-2 mb-sm-0 mb-md-2 mb-lg-0">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star"></i>
-                                    <span class="text-dark ms-1">4.2</span>
-                                </div>
-                                <small class="text-muted">987件のレビュー</small>
-                            </div>
-                        </div>
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/CH.png" alt="第2話">
+                        <div class="p-2 text-center small fw-bold">¥1,300</div>
                     </div>
+
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/SL.png" alt="第3話">
+                        <div class="p-2 text-center small fw-bold">¥4,600</div>
+                    </div>
+
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/WD.png" alt="第4話">
+                        <div class="p-2 text-center small fw-bold">¥980</div>
+                    </div>
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/PF.png" alt="第1話">
+                        <div class="p-2 text-center small fw-bold">¥900</div>
+                    </div>
+
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/CF.png" alt="第2話">
+                        <div class="p-2 text-center small fw-bold">¥2,600</div>
+                    </div>
+
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/SO.png" alt="第3話">
+                        <div class="p-2 text-center small fw-bold">¥3,800</div>
+                    </div>
+
+                    <div class="manga-column-item shadow-sm">
+                        <img src="img/DD.png" alt="第4話">
+                        <div class="p-2 text-center small fw-bold">¥1,100</div>
+                    </div>
+
                 </div>
             </div>
+
         </section>
 
         <!-- 人気ランキング -->
@@ -197,7 +311,7 @@
                 <!-- タブナビゲーション -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="fw-bold">
-                        <i class="bi bi-trophy-fill text-warning"></i> 人気ランキング
+                        <i class="bi bi-trophy-fill text-warning"></i> 売上ランキング
                     </h2>
                     <ul class="nav nav-pills" id="rankingTabTop" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -223,124 +337,43 @@
 
                 <!-- タブコンテンツ -->
                 <div class="tab-content" id="rankingTabContent">
-                    <!-- 総合ランキング -->
-                    <div class="tab-pane fade show active" id="weeklyTop" role="tabpanel">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">1</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/最強魔法使いの転生.webp" class="img-fluid rounded" alt="1位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-warning text-dark mb-2">1位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">最強魔法使いの転生</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">史上最強の魔法使いが未来へ転生。失われた魔法文明を前に、新たな仲間と共に世界の謎と陰謀へ挑む、爽快で壮大な転生ファンタジーアクション。</p>
-                                                <div class="rating-stars small">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-half"></i>
-                                                    <span class="text-dark">4.9</span>
-                                                </div>
-                                                <small class="text-muted">3,456件のレビュー</small>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                    <div class="container-fluid py-5 tab-pane fade show active" id="weeklyTop" role="tabpanel">
+                        <div class="manga-grid-slider">
+
+                            <div class="manga-grid-track">
+                                <div class="manga-grid-item"><img src="img/CF.png">
+                                    <p>1位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/CH.png">
+                                    <p>2位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/DD.png">
+                                    <p>3位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/EW.png">
+                                    <p>4位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/PF.png">
+                                    <p>5位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/SG.png">
+                                    <p>6位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/SL.png">
+                                    <p>7位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/SO.png">
+                                    <p>8位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/ST.png">
+                                    <p>9位</p>
+                                </div>
+                                <div class="manga-grid-item"><img src="img/WD.png">
+                                    <p>10位</p>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">2</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/竜騎士の伝説.webp" class="img-fluid rounded" alt="2位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-secondary mb-2">2位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">竜騎士の伝説</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">竜と契約した若き騎士が、仲間と共に迫りくる脅威と古代の謎に立ち向かう。絆と勇気が導く、壮大な冒険と伝説が紡がれるファンタジー物語。</p>
-                                                <div class="rating-stars small">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-half"></i>
-                                                    <span class="text-dark">4.7</span>
-                                                </div>
-                                                <small class="text-muted">2,890件のレビュー</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">3</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/魔法学園の日常.webp" class="img-fluid rounded" alt="3位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-secondary mb-2">3位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">魔法学園の日常</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">魔法学園に通う個性豊かな生徒たちが、授業や試験、友情や恋に揺れながら日々成長していく。笑いとときめきがあふれる、魔法世界の青春ファンタジー。</p>
-                                                <div class="rating-stars small">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-half"></i>
-                                                    <span class="text-dark">4.6</span>
-                                                </div>
-                                                <small class="text-muted">2,345件のレビュー</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">4</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/近未来探偵ネオ.webp" class="img-fluid rounded" alt="4位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-secondary mb-2">4位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">未来探偵ネオ</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">近未来都市を舞台に、若き探偵ネオが最新テクノロジーと鋭い推理力で複雑な事件に挑む。陰謀が渦巻く世界で真実を追い続ける、スタイリッシュなSFミステリーアクション。</p>
-                                                <div class="rating-stars small">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star"></i>
-                                                    <span class="text-dark">4.4</span>
-                                                </div>
-                                                <small class="text-muted">1,987件のレビュー</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -420,7 +453,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> AniListo</h5>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> OMG oh OMG</h5>
                     <p class="text-light">あなたの好きなアニメを見つけて、共有しよう。</p>
                 </div>
                 <div class="col-md-2 mb-3">
@@ -450,7 +483,7 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center text-light mb-0">&copy; 2025 AniListo. All rights reserved.</p>
+            <p class="text-center text-light mb-0">&copy; 2025 OMG oh OMG. All rights reserved.</p>
         </div>
     </footer>
     <button id="backToTopBtn" class="btn shadow d-flex align-items-center justify-content-center">
